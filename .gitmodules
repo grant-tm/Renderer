@@ -1,0 +1,9 @@
+[submodule "core"]
+	path = core
+	url = https://github.com/grant-tm/Core.git
+[submodule "platform"]
+	path = platform
+	url = https://github.com/grant-tm/Platform.git
+[submodule "gui"]
+	path = gui
+	url = https://github.com/grant-tm/GUI.git
