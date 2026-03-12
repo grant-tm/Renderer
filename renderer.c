@@ -77,12 +77,27 @@ static void Renderer_ApplyClipRect (Renderer *renderer, Rect2 rect)
 
 static Rect2 Renderer_IntersectRect (Rect2 a, Rect2 b)
 {
-    return Rect2_Create(
-        MAX(a.min.x, b.min.x),
-        MAX(a.min.y, b.min.y),
-        MIN(a.max.x, b.max.x),
-        MIN(a.max.y, b.max.y)
-    );
+    f32 min_x;
+    f32 min_y;
+    f32 max_x;
+    f32 max_y;
+
+    min_x = MAX(a.min.x, b.min.x);
+    min_y = MAX(a.min.y, b.min.y);
+    max_x = MIN(a.max.x, b.max.x);
+    max_y = MIN(a.max.y, b.max.y);
+
+    if (max_x < min_x)
+    {
+        max_x = min_x;
+    }
+
+    if (max_y < min_y)
+    {
+        max_y = min_y;
+    }
+
+    return Rect2_Create(min_x, min_y, max_x, max_y);
 }
 
 static void Renderer_PushClipRect (Renderer *renderer, Rect2 rect)
